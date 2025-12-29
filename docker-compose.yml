@@ -9,3 +9,26 @@ services:
     tty: true
     environment:
       - HOST=0.0.0.0
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=resource_planner
+      - DB_USER=app_user
+      - DB_PASSWORD=app_password
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=resource_planner
+      - MYSQL_USER=app_user
+      - MYSQL_PASSWORD=app_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:
