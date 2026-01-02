@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
   // 環境変数からデータベース接続情報を取得
   const dbHost = process.env.DB_HOST || 'mysql'
   const dbPort = parseInt(process.env.DB_PORT || '3306')
-  const dbName = process.env.DB_NAME || 'resource_planner'
+  const dbName = process.env.DB_NAME || 'shopping_list'
   const dbUser = process.env.DB_USER || 'app_user'
   const dbPassword = process.env.DB_PASSWORD || 'app_password'
 

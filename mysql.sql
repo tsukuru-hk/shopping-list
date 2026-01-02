@@ -1,11 +1,11 @@
 -- データベースの使用
-USE resource_planner;
+USE shopping_list;
 
 -- ユーザーの作成（既に環境変数で作成されている場合でもエラーにならないように）
 CREATE USER IF NOT EXISTS 'app_user'@'%' IDENTIFIED BY 'app_password';
 
 -- ユーザーに権限を付与
-GRANT ALL PRIVILEGES ON resource_planner.* TO 'app_user'@'%';
+GRANT ALL PRIVILEGES ON shopping_list.* TO 'app_user'@'%';
 
 -- 権限の反映
 FLUSH PRIVILEGES;
