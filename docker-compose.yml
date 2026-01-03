@@ -1,8 +1,8 @@
 services:
-  app:
+  nuxt:
     build: .
     ports:
-      - "3000:3000"
+      - "3002:3000"
     volumes:
       - .:/app
       - /app/node_modules
@@ -16,6 +16,26 @@ services:
       - DB_PASSWORD=app_password
     depends_on:
       - mysql
+    command: npm run dev
+
+  express:
+    build: .
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    tty: true
+    environment:
+      - HOST=0.0.0.0
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=shopping_list
+      - DB_USER=app_user
+      - DB_PASSWORD=app_password
+    depends_on:
+      - mysql
+    command: node app.js
 
   mysql:
     image: mysql:8.0
